@@ -2,6 +2,7 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Bootcamp = require('./models/Bootcamp');
+const Course = require('./models/Course');
 dotenv.config({ path: './config/config.env' });
 
 mongoose.Promise = global.Promise;
@@ -18,10 +19,14 @@ mongoose
 const bootcamps = JSON.parse(
   fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8')
 );
+const courses = JSON.parse(
+  fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8')
+);
 
 const importData = async () => {
   try {
     await Bootcamp.create(bootcamps);
+    await Course.create(courses);
     console.log('data imported...');
   } catch (err) {
     console.error(err);
@@ -31,6 +36,7 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Bootcamp.deleteMany();
+    await Course.deleteMany();
     console.log('data destroyed...');
     process.exit();
   } catch (err) {
@@ -39,10 +45,7 @@ const deleteData = async () => {
 };
 
 if (process.argv[2] === '-i') {
-  console.log(bootcamps);
-  Bootcamp.create(bootcamps).then(console.log('seeder importing data...'));
-  // importData();
-  // console.log(bootcamps);
+  importData();
 } else if (process.argv[2] === '-d') {
   deleteData();
 }

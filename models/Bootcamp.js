@@ -109,6 +109,7 @@ const BootcampSchema = new mongoose.Schema(
     // }
   },
   {
+    //39 - virtuals - pass in these options
     toJSON: { virtuals: true },
     toObject: { virtuals: true }
   }
@@ -132,6 +133,23 @@ BootcampSchema.pre('save', async function (next) {
     country: loc[0].country
   };
   this.address = undefined;
+  next();
+});
+
+//39 - reverse populate with virtuals
+BootcampSchema.virtual('courses', {
+  ref: 'Course',
+  localField: '_id',
+  foreignField: 'bootcamp',
+  justOne: false
+});
+
+//cascade delete
+//39
+//will not work with find by id and delete
+BootcampSchema.pre('remove', async function (next) {
+  console.log(`course being removed from bootcamp ${this._id}`);
+  await this.model('Course').deleteMany({ bootcamp: this._id });
   next();
 });
 
