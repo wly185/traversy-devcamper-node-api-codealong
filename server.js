@@ -1,4 +1,5 @@
 const express = require('express');
+// const path = require('path');
 
 const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
@@ -40,7 +41,6 @@ app.use(fileupload());
 //!! DNS prefetching
 //!! nosql attack
 
-
 //security
 //67
 app.use(mongoSanitize());
@@ -64,6 +64,10 @@ app.use('/api/v1/courses', courses);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+});
 
 //somehow you have to put below the routes
 //25
