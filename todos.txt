@@ -9,3 +9,9 @@
 
 - admin dashboard
 - content uploader
+
+
+inline script loading issue due to csp for doc gen
+
+//!! figure out why postman authorisation = no auth, = bearer token does not work
+//why jwt token keeps expiring

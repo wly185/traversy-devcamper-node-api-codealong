@@ -27,16 +27,16 @@ router
   .route('/')
   //44
   .get(advancedResults(Bootcamp, 'courses'), getBootcamps)
-  .post(protect, authorize('publisher,admin'), createBootcamp);
-//not sure about the typeof(args)
+  .post(protect, authorize('publisher', 'admin'), createBootcamp);
+
 router
   .route('/:id')
   .get(getBootcamp)
-  .put(protect, authorize('publisher,admin'), updateBootcamp)
-  .delete(protect, authorize('publisher,admin'), deleteBootcamp);
+  .put(protect, authorize('publisher', 'admin'), updateBootcamp)
+  .delete(protect, authorize('publisher', 'admin'), deleteBootcamp);
 
 router
   .route('/:id/photos')
-  .put(protect, authorize('publisher,admin'), bootcampPhotoUpload);
+  .put(protect, authorize('publisher', 'admin'), bootcampPhotoUpload);
 
 module.exports = router;

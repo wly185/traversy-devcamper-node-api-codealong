@@ -105,7 +105,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
 //@route   POST /api/vi1/auth/forgot password
 //@access  private
 exports.forgotPassword = asyncHandler(async (req, res, next) => {
-  console.log('forgot password');
+  // console.log('forgot password');
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {

@@ -5,65 +5,55 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
 const User = require('../models/User');
 
-//!! figure out why postman authorisation = no auth, = bearer token does not work
-//why jwt token keeps expiring
-
+// Protect routes
 exports.protect = asyncHandler(async (req, res, next) => {
-  // console.log('req.headers.cookie', req.headers.cookie);
-  //console.log('req.cookies',req.cookies.token)
-  // console.log(process.env.JWT_SECRET);
   let token;
+
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
   ) {
+    // Set token from Bearer token in header
     token = req.headers.authorization.split(' ')[1];
-    // console.log('bearer', token);
-  } else if (req.cookies.token) {
-    token = req.cookies.token;
-    // console.log('cookie token', token);
+    // Set token from cookie
   }
-  // console.log('token', token);
+  // else if (req.cookies.token) {
+  //   token = req.cookies.token;
+  // }
 
+  // Make sure token exists
   if (!token) {
-    return next(
-      new ErrorResponse(`not authorised to access this route, no token`, 401)
-    );
+    return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 
   try {
-    console.log('verifying');
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_SECRET,
-      function (err, decoded) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(decoded);
-        }
-      }
-    );
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = await User.findById(decoded.id);
+
+    next();
   } catch (err) {
-    return next(
-      new ErrorResponse(`not authorised to access this route,no user`, 401)
-    );
+    return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 });
 
-exports.authorize = (role) => {
+// Grant access to specific roles
+exports.authorize = (...roles) => {
   return (req, res, next) => {
-    //not sure the typeof(role)
-    if (!role.includes(req.user.role)) {
+    // console.log(
+    //   'authorised?',
+    //   roles.includes(req.user.role),
+    //   roles,
+    //   req.user.role
+    // );
+    if (roles.includes(req.user.role) == false) {
       return next(
         new ErrorResponse(
-          `user role ${req.user.role} is not authorized to access this route`,
+          `User role ${req.user.role} is not authorized to access this route`,
           403
         )
       );
-      //no res.redirect?
     }
     next();
   };

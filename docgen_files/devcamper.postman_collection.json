@@ -1,0 +1,997 @@
+{
+	"info": {
+		"_postman_id": "ea1a335c-8e48-465a-af1f-f2446b6b9a7d",
+		"name": "devcamper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "bootcamps",
+			"item": [
+				{
+					"name": "BOOTCAMPS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								""
+							]
+						},
+						"description": "public\nget all bootcamps\n/bootcamps/"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/5d713a66ec8f2b88b8f830b8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"5d713a66ec8f2b88b8f830b8"
+							]
+						},
+						"description": "public\nget bootcamp by id"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMP",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/123456",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"123456"
+							]
+						},
+						"description": "protected\nedit bootcamp"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMP",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/5d713995b721c3bb38c1f5d0",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"5d713995b721c3bb38c1f5d0"
+							]
+						},
+						"description": "protected\ndelete bootcamp by id"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMPS by radius",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/bootcamps/radius/02118/30",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"radius",
+								"02118",
+								"30"
+							]
+						},
+						"description": "public\nget bootcamps by radius"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Devworks Bootcamp 2\",\r\n\t\t\"description\": \"Devworks is a full stack JavaScript Bootcamp located in the heart of Boston that focuses on the technologies you need to get a high paying job as a web developer\",\r\n\t\t\"website\": \"https://devworks.com\",\r\n\t\t\"phone\": \"(111) 111-1111\",\r\n\t\t\"email\": \"enroll@devworks.com\",\r\n\t\t\"address\": \"233 Bay State Rd Boston MA 02215\",\r\n\t\t\"careers\": [\"Web Development\", \"UI/UX\", \"Business\"],\r\n\t\t\"housing\": true,\r\n\t\t\"jobAssistance\": true,\r\n\t\t\"jobGuarantee\": false,\r\n\t\t\"acceptGi\": true}"
+						},
+						"url": {
+							"raw": "{{URL}}/bootcamps/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								""
+							]
+						},
+						"description": "protected. create bootcamp"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMPS by query = average cost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/?averageCost[gte]=1000",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								""
+							],
+							"query": [
+								{
+									"key": "averageCost[gte]",
+									"value": "1000"
+								}
+							]
+						},
+						"description": "public. get bootcamps by query"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "courses",
+			"item": [
+				{
+					"name": "COURSES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/courses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"courses"
+							]
+						},
+						"description": "PUBLIC."
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMP",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n\r\n    \"title\": \"Front End Web Development 2\",\r\n    \"description\": \"This course will provide you with all of the essentials to become a successful frontend web developer. You will learn to master HTML, CSS and front end JavaScript, along with tools like Git, VSCode and front end frameworks like Vue\",\r\n    \"weeks\": 8,\r\n    \"tuition\": 8000,\r\n    \"minimumSkill\": \"beginner\",\r\n    \"scholarhipsAvailable\": true\r\n  }"
+						},
+						"url": {
+							"raw": "{{URL}}/bootcamps/5d725a037b292f5f8ceff787/courses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"5d725a037b292f5f8ceff787",
+								"courses"
+							]
+						},
+						"description": "PRIVATE"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOTCAMP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/courses/5d725cb9c4ded7bcb480eaa1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"courses",
+								"5d725cb9c4ded7bcb480eaa1"
+							]
+						},
+						"description": "PUBLIC. get bootcamp by id"
+					},
+					"response": []
+				},
+				{
+					"name": "COURSES by bootcamp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/5d725a1b7b292f5f8ceff788/courses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"5d725a1b7b292f5f8ceff788",
+								"courses"
+							]
+						},
+						"description": "PUBLIC. get courses by bootcamp"
+					},
+					"response": []
+				},
+				{
+					"name": "COURSE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjIxNTU0MDlkOWVkMjExYzdiYTEyMSIsImlhdCI6MTYwMDI2NTE3MiwiZXhwIjoxNjAyODU3MTcyfQ.Xok6VUjMZm39ojTa6o_Ema1Q1Vrj3rp6WAFoHiQzdeI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"title\": \"Full Stack Web Dev (edited)\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/courses/5d725cfec4ded7bcb480eaa7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"courses",
+								"5d725cfec4ded7bcb480eaa7"
+							]
+						},
+						"description": "PRIVATE. update course by id"
+					},
+					"response": []
+				},
+				{
+					"name": "COURSE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"title\": \"Full Stack Web Developer\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/courses/5d725cfec4ded7bcb480eaa7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"courses",
+								"5d725cfec4ded7bcb480eaa7"
+							]
+						},
+						"description": "PROTECTED. delete course by id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":{\"$gt\":\"\"},\r\n    \"password\":\"123456\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user 1\",\r\n    \"email\":\"user_1@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"role\":\"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PROFILE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjIxNTU0MDlkOWVkMjExYzdiYTEyMSIsImlhdCI6MTYwMDI2NTE3MiwiZXhwIjoxNjAyODU3MTcyfQ.Xok6VUjMZm39ojTa6o_Ema1Q1Vrj3rp6WAFoHiQzdeI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"wongluyi@gmail.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/forgotpassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"forgotpassword"
+							]
+						},
+						"description": "PUBLIC. remember email forgot password"
+					},
+					"response": []
+				},
+				{
+					"name": "PASSWORD",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/resetpassword/6f77df38afb486699a6c9c59ef229ba20b9cf868",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"resetpassword",
+								"6f77df38afb486699a6c9c59ef229ba20b9cf868"
+							]
+						},
+						"description": "PRIVATE. edit password. token and temporary password is generated. user receives email with the reset link."
+					},
+					"response": []
+				},
+				{
+					"name": "PROFILE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/auth/updatedetails",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"updatedetails"
+							]
+						},
+						"description": "PROTECTED. update profile email or name"
+					},
+					"response": []
+				},
+				{
+					"name": "PASSWORD",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"1234567\",\r\n    \"newPassword\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/updatepassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"updatepassword"
+							]
+						},
+						"description": "PROTECTED. user is logged and and updates password."
+					},
+					"response": []
+				},
+				{
+					"name": "LOGOUT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjIxNTU0MDlkOWVkMjExYzdiYTEyMSIsImlhdCI6MTYwMDI2NTE3MiwiZXhwIjoxNjAyODU3MTcyfQ.Xok6VUjMZm39ojTa6o_Ema1Q1Vrj3rp6WAFoHiQzdeI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "PUBLIC. log out."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users (admins)",
+			"item": [
+				{
+					"name": "USERS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "PROTECTED. AUTHORISED. admin. get all users"
+					},
+					"response": []
+				},
+				{
+					"name": "USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "PROTECTED. AUTHORISED. admin. get user by id"
+					},
+					"response": []
+				},
+				{
+					"name": "USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "PROTECTED. AUTHORISED. admin. create user"
+					},
+					"response": []
+				},
+				{
+					"name": "USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "PROTECTED. AUTHORISED. admin. create user"
+					},
+					"response": []
+				},
+				{
+					"name": "USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "PROTECTED. AUTHORISED. admin. delete user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "REVIEW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/bootcamps/5d713995b721c3bb38c1f5d0/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"5d713995b721c3bb38c1f5d0",
+								"reviews"
+							]
+						},
+						"description": "PUBLIC. get review by id when you are within a bootcamp route."
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEWS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reviews"
+							]
+						},
+						"description": "PUBLIC. get all reviews"
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reviews/5d7a514b5d2c12c7449be020",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reviews",
+								"5d7a514b5d2c12c7449be020"
+							]
+						},
+						"description": "PUBLIC. get review by id"
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"review by user 2\",\r\n    \"text\":\"great\",\r\n    \"rating\":10\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/bootcamps/5fad048098c37c02ac146da7/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"bootcamps",
+								"5fad048098c37c02ac146da7",
+								"reviews"
+							]
+						},
+						"description": "AUTHORIZED. same user or admin. create review. within bootcamp by id"
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW (same user or admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\":\"i changed the review body\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reviews/5fad059998c37c02ac146da8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reviews",
+								"5fad059998c37c02ac146da8"
+							]
+						},
+						"description": "AUTHORISED. update review by id. same user or admin."
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW (by same user or admin)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reviews/5fad138705294a3804896c80",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reviews",
+								"5fad138705294a3804896c80"
+							]
+						},
+						"description": "AUTHORISED. delete review by id. same user or admin."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
