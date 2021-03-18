@@ -2,3 +2,5 @@ node_modules/
 /config/config.env
 /devcamper_project_resources
 /devcamper-api-finished
+todos.txt
+notes.txt
