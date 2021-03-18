@@ -1,5 +1,6 @@
 //30.
 //31.
+
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const geocoder = require('../helpers/geocoder');
@@ -100,13 +101,13 @@ const BootcampSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now
+    },
+    //53
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: true
     }
-    // ,
-    // user: {
-    //   type: mongoose.Schema.ObjectId,
-    //   ref: 'User',
-    //   required: true
-    // }
   },
   {
     //39 - virtuals - pass in these options
@@ -115,10 +116,15 @@ const BootcampSchema = new mongoose.Schema(
   }
 );
 
+//30 slugify mongo model pre hook
+//'this' keyword to access the data
+//creates a slug for client end e.g. react - SEO, user friendly
 BootcampSchema.pre('save', function (next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });
+
+//31 geocoder mongo model pre hook
 
 BootcampSchema.pre('save', async function (next) {
   const loc = await geocoder.geocode(this.address);

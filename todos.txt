@@ -1,0 +1,11 @@
+- investigate the jwt
+-change jwt to passport auth and able to redirect
+-add in sessions and memory cache
+- send welcome email for account creation
+-receive newsletters
+
+- check need to create a front end, and plug it into react/bootstrap or sass
+- check if possible to lump together the async, error handler and error class extender
+
+- admin dashboard
+- content uploader

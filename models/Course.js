@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Bootcamp = require('../models/Bootcamp');
 
 const CourseSchema = new mongoose.Schema(
   {
@@ -15,7 +16,7 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       required: [true, 'please add number of weeks']
     },
-    weeks: {
+    tuition: {
       type: Number,
       required: [true, 'please add a tuition cost']
     },
@@ -35,6 +36,11 @@ const CourseSchema = new mongoose.Schema(
     bootcamp: {
       type: mongoose.Schema.ObjectId,
       ref: 'Bootcamp',
+      required: true
+    },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
       required: true
     }
   },
@@ -72,5 +78,10 @@ CourseSchema.post('save', function () {
 CourseSchema.pre('remove', function () {
   this.constructor.getAverageCost(this.bootcamp);
 });
+
+CourseSchema.methods.getUser = async function (courseId) {
+  const user = await Bootcamp.find({ course: courseId }).select('user');
+  return user;
+};
 
 module.exports = mongoose.model('Course', CourseSchema);
