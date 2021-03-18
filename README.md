@@ -3,7 +3,7 @@ traversy media's udemy course node api - devcamper
 https://www.udemy.com/course/nodejs-api-masterclass/  
 https://github.com/bradtraversy/devcamper-api  
 
-postman documentation 
+postman documentation  
 https://documenter.getpostman.com/view/10550828/Tz5v1EQY
 
 run code in sandbox 
