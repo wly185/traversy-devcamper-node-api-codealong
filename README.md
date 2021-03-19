@@ -3,7 +3,7 @@ platform for bootcamps and courses
 relationships many courses to single bootcamp many bootcamps to single user  
 
 view backend routes:  
-postman documentation  
+postman documentation site
 https://documenter.getpostman.com/view/10550828/Tz5v1EQY  
 
 run code in sandbox 
