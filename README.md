@@ -1,5 +1,6 @@
-platform for bootcamps and courses  
-3 roles - admin, publisher, user  
+code along for developer bootcamp courses platform.  
+includes geolocation, password reset email  
+multiple user roles - admin, publisher, user  
 relationships many courses to single bootcamp many bootcamps to single user  
 
 view backend routes:  
