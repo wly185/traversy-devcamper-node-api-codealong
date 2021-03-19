@@ -1,3 +1,8 @@
+platform for bootcamps and courses  
+3 roles - admin, publisher, user  
+relationships many courses to single bootcamp many bootcamps to single user  
+
+
 references  
 traversy media's udemy course node api - devcamper  
 https://www.udemy.com/course/nodejs-api-masterclass/  
