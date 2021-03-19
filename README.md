@@ -2,6 +2,8 @@ code along for developer bootcamp courses platform.
 includes geolocation, password reset email  
 multiple user roles - admin, publisher, user  
 relationships many courses to single bootcamp many bootcamps to single user  
+spec from traversy media  
+https://gist.github.com/bradtraversy/01adb248df70fb29e98c30cf659042cf
 
 view backend routes:  
 postman documentation site
